@@ -245,8 +245,10 @@ let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 " Jump between hunks
 nmap ] <Plug>(GitGutterNextHunk)  " git next
 nmap [ <Plug>(GitGutterPrevHunk)  " git previous
-" Hunk-add and hunk-revert for chunk staging
+" stages hunk and hunk-revert for chunk staging
 nmap <Leader>ga <Plug>(GitGutterStageHunk)  " git add (chunk)
+" undo/delete changes that are not staged yet
+" note: staged chunks are not unstaged
 nmap <Leader>gu <Plug>(GitGutterUndoHunk)  " git undo (chunk)
 let g:gitgutter_enabled = 1
 let g:gitgutter_map_keys = 0
