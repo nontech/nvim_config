@@ -236,7 +236,7 @@ nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>s :Ag<CR>
 " - down / up / left / right
-let g:fzf_layout = { 'down': '40%' }
+let g:fzf_layout = { 'up': '100%' }
 " This is the default option:
 "   - Preview window on the right with 50% width
 "   - CTRL-/ will toggle preview window.
