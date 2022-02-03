@@ -255,6 +255,10 @@ nmap <Leader>ga <Plug>(GitGutterStageHunk)  " git add (chunk)
 nmap <Leader>gu <Plug>(GitGutterUndoHunk)  " git undo (chunk)
 let g:gitgutter_enabled = 1
 let g:gitgutter_map_keys = 0
+
+" VIMAGIT
+" Open vimagit pane
+nnoremap <leader>gs :Magit<CR>       " git status
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
