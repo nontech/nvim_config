@@ -20,6 +20,9 @@ Plug 'elixir-editors/vim-elixir'
 " Elixir Formatter
 Plug 'mhinz/vim-mix-format'
 
+" Git
+Plug 'airblade/vim-gitgutter'
+
 " Javascript and co. formatter
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -238,6 +241,15 @@ let g:fzf_layout = { 'down': '40%' }
 " - To learn more about preview window options, see `--preview-window` section of `man fzf`.
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
+" GITGUTTER
+" Jump between hunks
+nmap ] <Plug>(GitGutterNextHunk)  " git next
+nmap [ <Plug>(GitGutterPrevHunk)  " git previous
+" Hunk-add and hunk-revert for chunk staging
+nmap <Leader>ga <Plug>(GitGutterStageHunk)  " git add (chunk)
+nmap <Leader>gu <Plug>(GitGutterUndoHunk)  " git undo (chunk)
+let g:gitgutter_enabled = 1
+let g:gitgutter_map_keys = 0
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
