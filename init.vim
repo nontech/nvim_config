@@ -20,8 +20,11 @@ Plug 'elixir-editors/vim-elixir'
 " Elixir Formatter
 Plug 'mhinz/vim-mix-format'
 
-" Git
+" GIT
+" For single source file
 Plug 'airblade/vim-gitgutter'
+" For project-wide management
+Plug 'jreybert/vimagit'
 
 " Javascript and co. formatter
 " post install (yarn install | npm install) then load plugin only for editing supported files
