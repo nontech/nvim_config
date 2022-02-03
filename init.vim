@@ -95,7 +95,7 @@ set updatetime=300
 set shortmess+=c            " Don't pass messages to |ins-completion-menu|.
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("nvim-0.5.0") || has("patch-8.1.1564")
+if has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
@@ -255,6 +255,8 @@ nmap <Leader>ga <Plug>(GitGutterStageHunk)  " git add (chunk)
 nmap <Leader>gu <Plug>(GitGutterUndoHunk)  " git undo (chunk)
 let g:gitgutter_enabled = 1
 let g:gitgutter_map_keys = 0
+" When signs don't update after focusing Vim
+let g:gitgutter_terminal_reports_focus=0
 
 " VIMAGIT
 " Open vimagit pane
