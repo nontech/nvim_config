@@ -272,6 +272,16 @@ nnoremap <leader>gs :Magit<CR>       " git status
 " Show commits for every source line
 nnoremap <Leader>gb :Git blame<CR>  " git blame
 
+" VIM-AIRLINE
+" enable/disable fzf integration
+let g:airline#extensions#fzf#enabled = 1
+" automatically displays all buffers when there's only one tab open
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
