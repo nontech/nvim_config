@@ -150,10 +150,13 @@ nmap <Leader>w :w<CR>
 " Type jj to exit insert mode quickly.
 inoremap jj <Esc>
 
-" Switch between next and previous buffers
+" Switch between the last two files
 "nnoremap <leader><leader> <c-^>
+nnoremap bb <c-^>
+
+" Switch between next and previous buffers
 nnoremap bn :bn<CR>
-nnoremap bv :bp<CR>
+nnoremap bp :bp<CR>
 
 " Pressing the letter o will open a new line below the current one.
 " Exit insert mode after creating a new line above or below the current line.
@@ -189,9 +192,6 @@ noremap <c-right> <c-w><
 " \b \f \g : go back/forward/last-used
 " \1 \2 \3 : go to buffer 1/2/3 etc
 nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>b :bp<CR>
-nnoremap <Leader>f :bn<CR>
-nnoremap <Leader>g :e#<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
 nnoremap <Leader>3 :3b<CR>
