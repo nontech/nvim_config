@@ -25,6 +25,9 @@ Plug 'mhinz/vim-mix-format'
 Plug 'airblade/vim-gitgutter'
 " For project-wide management
 Plug 'jreybert/vimagit'
+" Fugitive, git wrapper:
+" git blame & branch shown in vim-airline status bar
+Plug 'tpope/vim-fugitive'
 
 " vim-airline, a status bar:
 Plug 'vim-airline/vim-airline'
@@ -264,6 +267,11 @@ let g:gitgutter_terminal_reports_focus=0
 " VIMAGIT
 " Open vimagit pane
 nnoremap <leader>gs :Magit<CR>       " git status
+
+" VIM-FUGITIVE
+" Show commits for every source line
+nnoremap <Leader>gb :Git blame<CR>  " git blame
+
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
