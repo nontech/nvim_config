@@ -26,6 +26,9 @@ Plug 'airblade/vim-gitgutter'
 " For project-wide management
 Plug 'jreybert/vimagit'
 
+" vim-airline, a status bar:
+Plug 'vim-airline/vim-airline'
+
 " Javascript and co. formatter
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
