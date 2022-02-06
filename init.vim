@@ -168,8 +168,9 @@ nnoremap n nzz
 nnoremap N Nzz
 
 " Yank from cursor to the end of line.
-nnoremap Y y$
-
+nnoremap ye y$
+" Delete from cursor to the end of line.
+nnoremap de d$
 
 " You can split the window in Vim by typing :split or :vsplit.
 " Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
