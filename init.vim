@@ -35,6 +35,12 @@ Plug 'tpope/vim-fugitive'
 " vim-airline, a status bar:
 Plug 'vim-airline/vim-airline'
 
+" BRACKETS & SURROUNDINGS
+" adds brackets
+Plug 'jiangmiao/auto-pairs'
+" edits surroundings
+Plug 'tpope/vim-surround'
+
 " Javascript and co. formatter
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
