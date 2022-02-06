@@ -13,12 +13,15 @@ Plug 'easymotion/vim-easymotion'
 " Use release branch (recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" ELIXIR
 " Elixir language server extension based on elixir-ls for coc.nvim.
 Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 " File detection
 Plug 'elixir-editors/vim-elixir'
 " Elixir Formatter
 Plug 'mhinz/vim-mix-format'
+" adds 'end' at the end of the block
+Plug 'tpope/vim-endwise'
 
 " GIT
 " For single source file
