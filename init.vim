@@ -158,17 +158,10 @@ let g:mapleader = "\<Space>"
 " use leader w for saving:
 nmap <Leader>q :q<CR>
 nmap <Leader>w :w<CR>
+nmap <Leader>e :bd<CR>
 
 " Type jj to exit insert mode quickly.
 inoremap jj <Esc>
-
-" Switch between the last two files
-"nnoremap <leader><leader> <c-^>
-nnoremap bb <c-^>
-
-" Switch between next and previous buffers
-nnoremap bn :bn<CR>
-nnoremap bp :bp<CR>
 
 " Pressing the letter o will open a new line below the current one.
 " Exit insert mode after creating a new line above or below the current line.
@@ -198,12 +191,20 @@ noremap <c-down> <c-w>-
 noremap <c-left> <c-w>>
 noremap <c-right> <c-w><
 
-" Buffers
+" BUFFERS
 " Mappings to access buffers (don't use "\p" because a
 " delay before pressing "p" would accidentally paste).
 " \l       : list buffers
 " \b \f \g : go back/forward/last-used
 " \1 \2 \3 : go to buffer 1/2/3 etc
+" Switch between the last two files
+"nnoremap <leader><leader> <c-^>
+nnoremap <Leader>ba <c-^>
+" Switch between next and previous buffers
+nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>bp :bp<CR>
+nnoremap <Leader>bf :bf<CR>
+nnoremap <Leader>bl :bl<CR>
 nnoremap <Leader>l :ls<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
@@ -288,10 +289,11 @@ nnoremap <Leader>gb :Git blame<CR>  " git blame
 " VIM-AIRLINE
 " enable/disable fzf integration
 let g:airline#extensions#fzf#enabled = 1
-" automatically displays all buffers when there's only one tab open
+" Automatically displays all buffers when there's only one tab open
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
