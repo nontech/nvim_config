@@ -38,6 +38,9 @@ Plug 'tpope/vim-fugitive'
 " vim-airline, a status bar:
 Plug 'vim-airline/vim-airline'
 
+" for commenting
+Plug 'tpope/vim-commentary'
+
 " BRACKETS & SURROUNDINGS
 " adds brackets
 Plug 'jiangmiao/auto-pairs'
