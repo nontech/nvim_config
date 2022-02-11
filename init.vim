@@ -238,8 +238,6 @@ augroup options
     autocmd FileType vue setlocal shiftwidth=2 tabstop=2
 augroup END
 
-" CoC
-
 " vim-mix-format
 let g:mix_format_on_save = 1
 
