@@ -32,7 +32,6 @@ Plug 'airblade/vim-gitgutter'
 " For project-wide management
 Plug 'jreybert/vimagit'
 " Fugitive, git wrapper:
-" git blame & branch shown in vim-airline status bar
 Plug 'tpope/vim-fugitive'
 
 " vim-airline, a status bar:
@@ -286,6 +285,12 @@ nnoremap <leader>gs :Magit<CR>       " git status
 " VIM-FUGITIVE
 " Show commits for every source line
 nnoremap <Leader>gb :Git blame<CR>  " git blame
+" Show all changed files compared to master
+nnoremap <Leader>gf :G diff --name-status master<CR>  " git diff --name-status master
+" Show side-by-side diff of a file
+nnoremap <Leader>gd :Gvdiffsplit<CR>
+" Show git status in one line
+nnoremap <Leader>gl :Gclog!<CR>
 
 " VIM-AIRLINE
 " enable/disable fzf integration
