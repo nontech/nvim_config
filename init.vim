@@ -320,6 +320,9 @@ nmap <silent> <leader>tv :TestVisit<CR>
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 
+" Any help page in vertical right
+autocmd FileType help wincmd L
+
 " Enable the marker method of folding.
 augroup filetype_vim
     autocmd!
