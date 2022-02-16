@@ -55,8 +55,10 @@ Plug 'prettier/vim-prettier', {
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
 
-call plug#end()
+" Smooth scroll
+Plug 'yuttie/comfortable-motion.vim'
 
+call plug#end()
 
 syntax on                   " Turn syntax highlighting on.
 filetype on                 " Enable type file detection.
