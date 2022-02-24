@@ -221,7 +221,10 @@ nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 
+
+"=======================================================================
 " NERDTree
+
 " Toggle open and close
 nnoremap <silent><leader>a :NERDTreeToggle<CR>
 " Open current buffer in NERDTree
@@ -242,21 +245,31 @@ augroup options
     autocmd FileType vue setlocal shiftwidth=2 tabstop=2
 augroup END
 
+
+"=======================================================================
 " vim-mix-format
+
 let g:mix_format_on_save = 1
 
+
+"=======================================================================
 " Prettier
+
 " Run prettier for JS files and co. on save:
 " when running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue, PrettierAsync
 
+
+"=======================================================================
 " FZF
+
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>s :Ag<CR>
+
 " - down / up / left / right
 let g:fzf_layout = { 'up': '100%' }
 " This is the default option:
@@ -266,7 +279,28 @@ let g:fzf_layout = { 'up': '100%' }
 " - To learn more about preview window options, see `--preview-window` section of `man fzf`.
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
+" Buffer Delete
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --bind ctrl-a:select-all+accept'
+\ }))
+
+
+"=======================================================================
 " GITGUTTER
+
 " Jump between hunks
 nmap ] <Plug>(GitGutterNextHunk)  " git next
 nmap [ <Plug>(GitGutterPrevHunk)  " git previous
@@ -280,7 +314,10 @@ let g:gitgutter_map_keys = 0
 " When signs don't update after focusing Vim
 let g:gitgutter_terminal_reports_focus=0
 
+
+"=======================================================================
 " VIMAGIT
+
 " Open vimagit pane
 nnoremap <leader>gs :Magit<CR>       " git status
 
@@ -294,7 +331,10 @@ nnoremap <Leader>gd :Gvdiffsplit<CR>
 " Show git status in one line
 nnoremap <Leader>gl :Gclog!<CR>
 
+
+"=======================================================================
 " VIM-AIRLINE
+
 " enable/disable fzf integration
 let g:airline#extensions#fzf#enabled = 1
 " Automatically displays all buffers when there's only one tab open
