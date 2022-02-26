@@ -1,62 +1,56 @@
-call plug#begin('~/.vim/plugged')
 
-Plug 'preservim/nerdtree'
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
-Plug 'sheerun/vim-polyglot'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+"=======================================================================
+" PLUGINS
+"=======================================================================
 
-Plug 'easymotion/vim-easymotion'
+" Automatically install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Conquer of Completion
-" Use release branch (recommend)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" ELIXIR
-" Elixir language server extension based on elixir-ls for coc.nvim.
-Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
-" File detection
-Plug 'elixir-editors/vim-elixir'
-" Elixir Formatter
-Plug 'mhinz/vim-mix-format'
-" adds 'end' at the end of the block
-Plug 'tpope/vim-endwise'
+call plug#begin(data_dir . '/plugins')
 
-" TEST
-Plug 'vim-test/vim-test'
+source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/dracula.vim
+source ~/.config/nvim/plugins/polyglot.vim
+source ~/.config/nvim/plugins/fzf.vim
+source ~/.config/nvim/plugins/easymotion.vim
+source ~/.config/nvim/plugins/test.vim
+source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/comfortable-motion.vim
+source ~/.config/nvim/plugins/airline.vim
+source ~/.config/nvim/plugins/move.vim
+source ~/.config/nvim/plugins/winresizer.vim
+source ~/.config/nvim/plugins/startify.vim
+source ~/.config/nvim/plugins/auto-pairs.vim
+source ~/.config/nvim/plugins/surround.vim
+source ~/.config/nvim/plugins/prettier.vim
+source ~/.config/nvim/plugins/coc.vim
+
+" Search within a file
+source ~/.config/nvim/plugins/incsearch.vim
+source ~/.config/nvim/plugins/incsearch-fuzzy.vim
+source ~/.config/nvim/plugins/incsearch-easymotion.vim
 
 " GIT
 " For single source file
-Plug 'airblade/vim-gitgutter'
+source ~/.config/nvim/plugins/gitgutter.vim
 " For project-wide management
-Plug 'jreybert/vimagit'
-" Fugitive, git wrapper:
-Plug 'tpope/vim-fugitive'
+source ~/.config/nvim/plugins/vimagit.vim
+source ~/.config/nvim/plugins/fugitive.vim
 
-" vim-airline, a status bar:
-Plug 'vim-airline/vim-airline'
-
-" for commenting
-Plug 'tpope/vim-commentary'
-
-" BRACKETS & SURROUNDINGS
-" adds brackets
-Plug 'jiangmiao/auto-pairs'
-" edits surroundings
-Plug 'tpope/vim-surround'
-
-" Javascript and co. formatter
-" post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-
-" Themes
-Plug 'dracula/vim', { 'as': 'dracula' }
-
-" Smooth scroll
-Plug 'yuttie/comfortable-motion.vim'
+" ELIXIR
+source ~/.config/nvim/plugins/coc-elixir.vim
+source ~/.config/nvim/plugins/elixir.vim
+source ~/.config/nvim/plugins/mix-format.vim
+source ~/.config/nvim/plugins/endwise.vim
 
 call plug#end()
 
@@ -91,7 +85,6 @@ set tabstop=2
 
 " Indentation
 set smartindent
-
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set expandtab               " Use space characters instead of tabs.
 set nobackup                " Do not save backup files.
@@ -111,39 +104,6 @@ set wildmode=list:longest   " Make wildmenu behave like similar to Bash completi
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" COC
-set cmdheight=2             " Give more space for displaying messages.
-set updatetime=300
-set shortmess+=c            " Don't pass messages to |ins-completion-menu|.
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-nnoremap <leader>d :CocDiagnostics<CR>
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-
 " STATUS LINE
 set statusline=                   " Clear status line when vimrc is reloaded.
 set statusline+=\ %F\ %M\ %Y\ %R  " Status line left side.
@@ -154,10 +114,9 @@ set laststatus=2  " Show the status on the second to last line.
 
 
 
-" MAPPINGS --------------------------------------------------------------- {{{
-
-let mapleader = "\<Space>"
-let g:mapleader = "\<Space>"
+"=======================================================================
+" MAPPINGS
+"=======================================================================
 
 " use leader w for saving:
 nmap <Leader>q :q<CR>
@@ -181,6 +140,21 @@ nnoremap ye y$
 " Delete from cursor to the end of line.
 nnoremap de d$
 
+" noh - no highlight
+map <esc> :noh <CR>
+
+
+"=======================================================================
+" NVIM
+
+nmap <Leader>ve :edit ~/.config/nvim/init.vim<cr>
+nmap <Leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
+nmap <Leader>vs :source ~/.config/nvim/init.vim<cr>
+
+
+"=======================================================================
+" WINDOWS
+
 " You can split the window in Vim by typing :split or :vsplit.
 " Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
 nnoremap <c-j> <c-w>j
@@ -195,7 +169,10 @@ noremap <c-down> <c-w>-
 noremap <c-left> <c-w>>
 noremap <c-right> <c-w><
 
+
+"=======================================================================
 " BUFFERS
+
 " Mappings to access buffers (don't use "\p" because a
 " delay before pressing "p" would accidentally paste).
 " \l       : list buffers
@@ -222,15 +199,10 @@ nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 
 
-"=======================================================================
-" NERDTree
 
-" Toggle open and close
-nnoremap <silent><leader>a :NERDTreeToggle<CR>
-" Open current buffer in NERDTree
-map <leader>r :NERDTreeFind<CR>
-" Have nerdtree ignore certain files and directories.
-let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+"=======================================================================
+" VIMSCRIPT
+"=======================================================================
 
 fun! StripTrailingWhitespace()
     %s/\s\+$//e
@@ -244,131 +216,6 @@ augroup options
     autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
     autocmd FileType vue setlocal shiftwidth=2 tabstop=2
 augroup END
-
-
-"=======================================================================
-" vim-mix-format
-
-let g:mix_format_on_save = 1
-
-
-"=======================================================================
-" Prettier
-
-" Run prettier for JS files and co. on save:
-" when running at every change you may want to disable quickfix
-let g:prettier#quickfix_enabled = 0
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue, PrettierAsync
-
-
-"=======================================================================
-" FZF
-
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>g :GFiles<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>s :Ag<CR>
-
-" - down / up / left / right
-let g:fzf_layout = { 'up': '100%' }
-" This is the default option:
-"   - Preview window on the right with 50% width
-"   - CTRL-/ will toggle preview window.
-" - Note that this array is passed as arguments to fzf#vim#with_preview function.
-" - To learn more about preview window options, see `--preview-window` section of `man fzf`.
-let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-
-" Buffer Delete
-function! s:list_buffers()
-  redir => list
-  silent ls
-  redir END
-  return split(list, "\n")
-endfunction
-
-function! s:delete_buffers(lines)
-  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
-endfunction
-
-command! BD call fzf#run(fzf#wrap({
-  \ 'source': s:list_buffers(),
-  \ 'sink*': { lines -> s:delete_buffers(lines) },
-  \ 'options': '--multi --bind ctrl-a:select-all+accept'
-\ }))
-
-
-"=======================================================================
-" GITGUTTER
-
-" Jump between hunks
-nmap ] <Plug>(GitGutterNextHunk)  " git next
-nmap [ <Plug>(GitGutterPrevHunk)  " git previous
-" stages hunk and hunk-revert for chunk staging
-nmap <Leader>ga <Plug>(GitGutterStageHunk)  " git add (chunk)
-" undo/delete changes that are not staged yet
-" note: staged chunks are not unstaged
-nmap <Leader>gu <Plug>(GitGutterUndoHunk)  " git undo (chunk)
-let g:gitgutter_enabled = 1
-let g:gitgutter_map_keys = 0
-" When signs don't update after focusing Vim
-let g:gitgutter_terminal_reports_focus=0
-
-
-"=======================================================================
-" VIMAGIT
-
-" Open vimagit pane
-nnoremap <leader>gs :Magit<CR>       " git status
-
-" VIM-FUGITIVE
-" Show commits for every source line
-nnoremap <Leader>gb :Git blame<CR>  " git blame
-" Show all changed files compared to master
-nnoremap <Leader>gf :G diff --name-status master<CR>  " git diff --name-status master
-" Show side-by-side diff of a file
-nnoremap <Leader>gd :Gvdiffsplit<CR>
-" Show git status in one line
-nnoremap <Leader>gl :Gclog!<CR>
-
-
-"=======================================================================
-" VIM-AIRLINE
-
-" enable/disable fzf integration
-let g:airline#extensions#fzf#enabled = 1
-" Automatically displays all buffers when there's only one tab open
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-" TEST
-let test#strategy='neovim'
-" << START -- hypcloud project-specific settings (later separate it) >>
-" look into test-transformation to make this elegant
-let test#project_root = "~/Projects/hypcloud_projects/dev_environment/core"
-let test#elixir#exunit#executable='~/Projects/hypcloud_projects/dev_environment/scripts/compose-run-core.sh mix test'
-" -- END >>
-"disable clearing test screen before running the test
-let g:test#preserve_screen = 1
-"test terminal open in normal mode, so it does not close on key press
-let g:test#neovim#start_normal = 1
-" test terminal window position
-let test#neovim#term_position = "vert"
-" make test commands execute using neovim
-"let test#strategy = 'neovim'
-nmap <silent> <leader>tn :TestNearest<CR>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ts :TestSuite<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tv :TestVisit<CR>
-
-" }}}
-
-" VIMSCRIPT -------------------------------------------------------------- {{{
 
 " Any help page in vertical right
 autocmd FileType help wincmd L
@@ -437,7 +284,4 @@ if has('gui_running')
         \endif<CR>
 
 endif
-
-" }}}
-
 
