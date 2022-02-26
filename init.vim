@@ -143,6 +143,12 @@ nnoremap de d$
 " noh - no highlight
 map <esc> :noh <CR>
 
+" redo
+nnoremap U <C-R>
+
+" Allow gf to open non-existent files
+map gf :edit <cfile><cr>
+
 
 "=======================================================================
 " NVIM
