@@ -1,5 +1,9 @@
 Plug 'easymotion/vim-easymotion'
 
+" Move to word in both direction
+map  <Leader><Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
+
 " N-character search motion
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
@@ -10,8 +14,8 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 " hjkl motions
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
+map <Leader><Leader>l <Plug>(easymotion-lineforward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><Leader>h <Plug>(easymotion-linebackward)
 
