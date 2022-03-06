@@ -34,6 +34,7 @@ source ~/.config/nvim/plugins/surround.vim
 source ~/.config/nvim/plugins/prettier.vim
 source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/bbye.vim
+source ~/.config/nvim/plugins/mundo.vim
 
 " Search within a file
 source ~/.config/nvim/plugins/incsearch.vim
@@ -113,7 +114,13 @@ set statusline+=%=                " Use a divider to separate the left side from
 "set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 set laststatus=2  " Show the status on the second to last line.
 
-
+" UNDO
+" save undo trees in files
+" enable persistent undo so that undo history persists across vim sessions
+set undofile
+set undodir=~/.vim/undo
+" number of undo saved
+set undolevels=10000
 
 "=======================================================================
 " MAPPINGS
@@ -234,14 +241,6 @@ augroup END
 
 " If the current file type is HTML, set indentation to 2 spaces.
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
-
-" If Vim version is equal to or greater than 7.3 enable undofile.
-" This allows you to undo changes to a file even after saving it.
-if version >= 703
-    set undodir=~/.vim/backup
-    set undofile
-    set undoreload=10000
-endif
 
 " You can split a window into sections by typing `:split` or `:vsplit`.
 " Display cursorline and cursorcolumn ONLY in active window.
