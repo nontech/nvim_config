@@ -33,6 +33,7 @@ source ~/.config/nvim/plugins/auto-pairs.vim
 source ~/.config/nvim/plugins/surround.vim
 source ~/.config/nvim/plugins/prettier.vim
 source ~/.config/nvim/plugins/coc.vim
+source ~/.config/nvim/plugins/bbye.vim
 
 " Search within a file
 source ~/.config/nvim/plugins/incsearch.vim
@@ -121,7 +122,6 @@ set laststatus=2  " Show the status on the second to last line.
 " use leader w for saving:
 nmap <Leader>q :q<CR>
 nmap <Leader>w :w<CR>
-nmap <Leader>e :bd<CR>
 
 " Type jj to exit insert mode quickly.
 inoremap jj <Esc>
