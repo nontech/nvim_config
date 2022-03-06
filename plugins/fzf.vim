@@ -5,6 +5,10 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>s :Ag<CR>
+nnoremap <leader>hc :History:<CR>
+nnoremap <leader>hs :History/<CR>
+nnoremap <leader>gc :Commits<CR>
+nnoremap <leader>bc :BCommits<CR>
 
 " - down / up / left / right
 let g:fzf_layout = { 'up': '100%' }
