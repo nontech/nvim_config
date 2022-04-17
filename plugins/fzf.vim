@@ -10,6 +10,12 @@ nnoremap <leader>hs :History/<CR>
 nnoremap <leader>gc :Commits<CR>
 nnoremap <leader>bc :BCommits<CR>
 
+" Enable per-command history
+" - History files will be stored in the specified directory
+" - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
+"   'previous-history' instead of 'down' and 'up'.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
 " - down / up / left / right
 let g:fzf_layout = { 'up': '100%' }
 " This is the default option:

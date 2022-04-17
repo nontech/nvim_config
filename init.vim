@@ -151,7 +151,7 @@ nnoremap de d$
 map <esc> :noh <CR>
 
 " redo
-nnoremap <Leader>r <C-R>
+nnoremap <A-u> <C-R>
 
 " Allow gf to open non-existent files
 map gf :edit <cfile><cr>
