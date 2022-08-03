@@ -17,7 +17,11 @@ nnoremap <leader>bc :BCommits<CR>
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " - down / up / left / right
-let g:fzf_layout = { 'up': '100%' }
+let g:fzf_layout = { 'down': '30%'}
+
+" - Popup window (anchored to the bottom of the current window)
+" let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.4, 'relative': v:true, 'yoffset': 1.0 } }
+
 " This is the default option:
 "   - Preview window on the right with 50% width
 "   - CTRL-/ will toggle preview window.
